@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Codo</title>
+    <link rel="shortcut icon" href="./images/header/minilogo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/headeryfooter.css">
+    <link rel="stylesheet" href="./css/productos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700&display=swap" rel="stylesheet">  
+</head>
+<body>
+    <header>
+        
+    </header>
+    <main>
+        <div>
+            <img class="minicarrito" src="./images/main/minicarrito.webp" alt="">
+        </div>
+        <div id="app">
+            <div class="filtro">
+                <select name="tipo" id="tipo">
+                    <option  v-for="producto in tipos" :value="elemento" >{{producto}}</option>     
+                </select> 
+
+                <button class="btn-filtro" v-on:click="filtrarDatos()">Filtrar</button><br>
+
+                <label for="orden">Ordenar por:</label>
+                <input type="radio" name="orden" id="ordenPrecioAsc">Menor precio
+                <input type="radio" name="orden" id="ordenPrecioDesc">Mayor precio
+                <button v-on:click="ordenarDatos()">Ordenar</button>
+            </div>     
+    
+            <div class="container">
+                <div class="productos">
+                    <div class="item" v-for="producto in productos" :id="producto.seccion">
+                        <img class="img-item" v-bind:src="producto.imagen" :alt="producto.descripcion">
+                        <h4 class="titulo-item">{{producto.descripcion}}</h4>
+                        <p class="precio-item">Stock: {{producto.stock}}</p>
+                        <p class="precio-item">Precio: ${{producto.precio}}</p>
+                        <button class="boton-item" v-on:click="agregarAlCarritoClicked()">Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="carrito" id="carrito">
+                <div class="header-carrito">
+                    <h2>Tu Carrito</h2>
+                </div>
+                <div class="carrito-items">                    
+                </div>
+                <div class="carrito-total">
+                    <div class="fila">
+                        <strong>Tu Total</strong>
+                        <span class="carrito-precio-total">
+                            $000.000,00
+                        </span>
+                    </div>
+                    <button class="btn-pagar">Pagar<img src="./images/main/bolsa.webp" alt=""></button>
+                </div>
+            </div>     -->
+            
+            <section class="modal " id="modal">                
+                <div class="modal_container">                    
+                    <div class="modal-header">                        
+                        <img class="modal-cerrar" src="./images/main/minilogo.png" alt="">
+                        <h2 class="modal_title">Tu Carrito</h2>
+                    </div>
+                    <div class="modal-items">
+
+                    </div>
+                    <div class="modal-total">
+                        <div>
+                            <strong>Tu Total</strong>
+                            <span class="modal-precio-total">
+                                $000.000,00
+                            </span>
+                        </div>
+                        <button class="btn-pagar">Pagar<img class="modal_img" src="./images/main/bolsa.webp" alt=""></button>
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+
+        <div class="volver"><a href="productos.html">↑ VOLVER</a></div>
+    </main>    
+    <footer>        
+        
+    </footer>
+    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/headeryfooter.js"></script>
+    <script src="./js/productos.js"></script>
+    <!-- <script src="./js/app.js" async></script>  -->
+    <script src="./js/carrito.js" async></script>
+</body>
+</html>
